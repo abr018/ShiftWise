@@ -1,16 +1,28 @@
-# ShiftWise
+# 🚀 ShiftWise
 
-## Recruitment Management Platform
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge\&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=vite)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge\&logo=mariadb)
+![Status](https://img.shields.io/badge/Status-In%20Development-success?style=for-the-badge)
 
-ShiftWise is a modern recruitment management platform developed with **React** and **TypeScript**. The project simulates a real-world recruitment system where recruiters can manage candidates, publish job opportunities and track applications through a clean and modern interface.
-
-The goal of this project is to strengthen my front-end development skills while building a scalable application following modern development practices.
+> **A modern Recruitment Management Platform built with React, TypeScript and Vite.**
 
 ---
 
-# Features
+# 📖 About
 
-* 📊 Dashboard with statistics
+**ShiftWise** is a recruitment management platform developed with **React** and **TypeScript**.
+
+The project simulates a real-world recruitment system where recruiters can manage candidates, publish job opportunities and track applications through a modern, responsive and intuitive interface.
+
+This project is part of my learning journey as a Computer Science student and is continuously evolving as I improve my front-end and full-stack development skills.
+
+---
+
+# ✨ Features
+
+* 📊 Dashboard with recruitment statistics
 * 👨‍💼 Recruiter management
 * 👤 Candidate management
 * 💼 Job listings
@@ -24,7 +36,7 @@ The goal of this project is to strengthen my front-end development skills while 
 
 ---
 
-# Technologies
+# 🛠️ Technologies
 
 * React
 * TypeScript
@@ -34,80 +46,100 @@ The goal of this project is to strengthen my front-end development skills while 
 
 ---
 
-# Screenshots
+# 📸 Screenshots
 
-## Dashboard
+## 📊 Dashboard
 
 ![Dashboard](./screenshots/dashboard.png)
 
-The main dashboard provides a quick overview of the recruitment platform, displaying statistics and quick navigation to every module.
+The dashboard provides an overview of the recruitment platform, displaying statistics and quick navigation to the main modules.
 
 ---
 
-## Job Listings
+## 💼 Job Listings
 
 ![Jobs](./screenshots/jobs.png)
 
-Users can search, filter and sort available job opportunities while viewing detailed information for each vacancy.
+Browse available vacancies, search by keyword, filter categories and sort opportunities.
 
 ---
 
-## Candidates
+## 📄 Job Details
+
+![Job Details](./screenshots/job-details.png)
+
+Detailed information about each job opportunity, including requirements and technologies.
+
+---
+
+## 👤 Candidates
 
 ![Candidates](./screenshots/candidates.png)
 
-Displays candidate profiles, skills and professional experience in a clean card-based interface.
+Browse candidate profiles, technical skills and professional experience using reusable React components.
 
 ---
 
-## Recruiters
+## 👨‍💼 Recruiters
 
 ![Recruiters](./screenshots/recruiters.png)
 
-Recruiter profiles with technologies, contact information and years of experience.
+Manage recruiter profiles with contact information, technologies and years of experience.
 
 ---
 
-## Applications
+## ✅ Applications
 
 ![Applications](./screenshots/applications.png)
 
-Applicants can easily track submitted job applications and monitor their current status.
+Track submitted applications and monitor their current status.
 
 ---
 
-## Saved Jobs
+## ❤️ Saved Jobs
 
 ![Saved Jobs](./screenshots/saved-jobs.png)
 
-Favourite job opportunities can be saved for future review.
+Save favourite vacancies locally using LocalStorage for quick access later.
 
 ---
 
-# Project Structure
+# 📂 Project Structure
 
 ```text
 src/
 │
+├── assets/
 ├── components/
 ├── pages/
 ├── services/
 ├── styles/
-├── assets/
 └── App.tsx
 ```
 
 ---
 
-# Installation
+# 🚀 Getting Started
 
-Install the dependencies
+## Clone the repository
+
+```bash
+git clone https://github.com/abr018/ShiftWise.git
+```
+
+## Navigate to the project
+
+```bash
+cd ShiftWise/frontend
+```
+
+## Install dependencies
 
 ```bash
 npm install
 ```
 
-Run the application
+## Run the application
 
 ```bash
 npm run dev
@@ -115,23 +147,29 @@ npm run dev
 
 ---
 
-# Future Improvements
+# 🚀 Future Improvements
 
 * JWT Authentication
-* ASP.NET Core Backend API
+* ASP.NET Core Web API
 * MariaDB integration
 * User profiles
 * Recruiter authentication
 * Image upload
 * Email notifications
-* Docker deployment
+* Docker support
 * Unit testing
 * Cloud deployment
 
 ---
 
-# Author
+# 👨‍💻 Author
 
 **José Abreu Cosme Zaza**
 
-Computer Science Student | Full-Stack Developer (Learning)
+Computer Science Student • Full-Stack Developer (Learning)
+
+GitHub: https://github.com/abr018
+
+---
+
+⭐ **If you enjoyed this project, consider giving it a star!**
