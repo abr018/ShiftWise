@@ -1,0 +1,30 @@
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  background:#111827;
+}
+
+.navbar h2{
+  color:white;
+}
+
+.nav-links{
+  display:flex;
+  gap:15px;
+}
+
+.nav-links button{
+  background:#38bdf8;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.nav-links button:hover{
+  background:#0ea5e9;
+}

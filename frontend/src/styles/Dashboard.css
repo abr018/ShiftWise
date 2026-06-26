@@ -1,0 +1,79 @@
+body{
+    margin:0;
+    background-color:#0f172a;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.dashboard{
+    padding:40px;
+}
+
+.cards{
+    display:flex;
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    width:220px;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+.card h3{
+    color:#94a3b8;
+}
+
+.card h1{
+    color:#38bdf8;
+}
+
+.candidates-section {
+  margin-top: 25px;
+}
+
+.candidate-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.candidate-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 15px;
+  width: 260px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.candidate-card h3 {
+  margin-bottom: 8px;
+}
+
+.skills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.skills span {
+  background: #38bdf8;
+  color: #0f172a;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.candidate-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card-button {
+  margin-right: 12px;
+}
