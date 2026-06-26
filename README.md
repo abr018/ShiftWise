@@ -1,38 +1,51 @@
 # 🚀 ShiftWise
 
+<p align="center">
+
+# Recruitment Management Platform
+
+A modern recruitment management platform built with **React**, **TypeScript** and **Vite**.
+
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge\&logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=vite)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge\&logo=mariadb)
 ![Status](https://img.shields.io/badge/Status-In%20Development-success?style=for-the-badge)
 
-> **A modern Recruitment Management Platform built with React, TypeScript and Vite.**
+</p>
 
 ---
 
 # 📖 About
 
-**ShiftWise** is a recruitment management platform developed with **React** and **TypeScript**.
+**ShiftWise** is a recruitment management platform developed as a personal learning project.
 
-The project simulates a real-world recruitment system where recruiters can manage candidates, publish job opportunities and track applications through a modern, responsive and intuitive interface.
+The application simulates a modern recruitment system where recruiters can:
 
-This project is part of my learning journey as a Computer Science student and is continuously evolving as I improve my front-end and full-stack development skills.
+* Manage candidates
+* Publish job opportunities
+* Track applications
+* Save favourite jobs
+* Search and filter vacancies
+
+The main goal of this project is to improve my **React**, **TypeScript** and **Front-End** development skills while building software following modern development practices.
 
 ---
 
 # ✨ Features
 
-* 📊 Dashboard with recruitment statistics
-* 👨‍💼 Recruiter management
-* 👤 Candidate management
-* 💼 Job listings
-* 🔍 Search and filter jobs
-* ↕️ Sort job offers
-* 📄 Job details page
-* ✅ Apply to jobs
-* ❤️ Save favourite jobs
-* 💾 LocalStorage persistence
-* 📱 Responsive user interface
+* 📊 Dashboard
+* 👤 Candidate Management
+* 👨‍💼 Recruiter Management
+* 💼 Job Listings
+* 📄 Job Details
+* 🔍 Search Jobs
+* 🎯 Filter Jobs
+* ↕️ Sort Jobs
+* ✅ Apply to Jobs
+* ❤️ Save Favourite Jobs
+* 💾 LocalStorage Persistence
+* 📱 Responsive Design
 
 ---
 
@@ -50,96 +63,99 @@ This project is part of my learning journey as a Computer Science student and is
 
 ## 📊 Dashboard
 
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](./screenshots/Dashboard.png)
 
-The dashboard provides an overview of the recruitment platform, displaying statistics and quick navigation to the main modules.
+Overview of the platform with recruitment statistics and quick navigation.
 
 ---
 
 ## 💼 Job Listings
 
-![Jobs](./screenshots/jobs.png)
+![Jobs](./screenshots/Jobs.png)
 
-Browse available vacancies, search by keyword, filter categories and sort opportunities.
+Browse, search, filter and sort job opportunities.
 
 ---
 
 ## 📄 Job Details
 
-![Job Details](./screenshots/job-details.png)
+![Job Details](./screenshots/Job%20Details.png)
 
-Detailed information about each job opportunity, including requirements and technologies.
+Detailed information about each vacancy, including required technologies and experience.
 
 ---
 
 ## 👤 Candidates
 
-![Candidates](./screenshots/candidates.png)
+![Candidates](./screenshots/Candidates.png)
 
-Browse candidate profiles, technical skills and professional experience using reusable React components.
+Candidate profiles displayed using reusable React components.
 
 ---
 
 ## 👨‍💼 Recruiters
 
-![Recruiters](./screenshots/recruiters.png)
+![Recruiters](./screenshots/Recruiters.png)
 
-Manage recruiter profiles with contact information, technologies and years of experience.
+Recruiter profiles including contact information and technologies.
 
 ---
 
 ## ✅ Applications
 
-![Applications](./screenshots/applications.png)
+![Applications](./screenshots/Applications.png)
 
-Track submitted applications and monitor their current status.
+Track submitted applications and monitor their status.
 
 ---
 
 ## ❤️ Saved Jobs
 
-![Saved Jobs](./screenshots/saved-jobs.png)
+![Saved Jobs](./screenshots/Saved%20Jobs.png)
 
-Save favourite vacancies locally using LocalStorage for quick access later.
+Save interesting job opportunities locally using LocalStorage.
 
 ---
 
 # 📂 Project Structure
 
 ```text
-src/
+frontend/
 │
-├── assets/
-├── components/
-├── pages/
-├── services/
-├── styles/
-└── App.tsx
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── styles/
+│   └── App.tsx
+│
+└── public/
 ```
 
 ---
 
 # 🚀 Getting Started
 
-## Clone the repository
+Clone the repository
 
 ```bash
 git clone https://github.com/abr018/ShiftWise.git
 ```
 
-## Navigate to the project
+Navigate to the Frontend
 
 ```bash
 cd ShiftWise/frontend
 ```
 
-## Install dependencies
+Install dependencies
 
 ```bash
 npm install
 ```
 
-## Run the application
+Run the application
 
 ```bash
 npm run dev
@@ -147,18 +163,18 @@ npm run dev
 
 ---
 
-# 🚀 Future Improvements
+# 🎯 Roadmap
 
-* JWT Authentication
-* ASP.NET Core Web API
-* MariaDB integration
-* User profiles
-* Recruiter authentication
-* Image upload
-* Email notifications
-* Docker support
-* Unit testing
-* Cloud deployment
+* 🔐 JWT Authentication
+* 🌐 ASP.NET Core Web API
+* 🗄️ MariaDB Integration
+* 👤 User Profiles
+* 👨‍💼 Recruiter Authentication
+* 🖼️ Image Upload
+* 📧 Email Notifications
+* 🐳 Docker Support
+* ✅ Unit Testing
+* ☁️ Cloud Deployment
 
 ---
 
@@ -166,10 +182,17 @@ npm run dev
 
 **José Abreu Cosme Zaza**
 
-Computer Science Student • Full-Stack Developer (Learning)
+🎓 Computer Science Student
 
-GitHub: https://github.com/abr018
+💻 Aspiring Full-Stack Developer
+
+GitHub:
+https://github.com/abr018
 
 ---
 
-⭐ **If you enjoyed this project, consider giving it a star!**
+<p align="center">
+
+⭐ If you like this project, consider giving it a Star!
+
+</p>
