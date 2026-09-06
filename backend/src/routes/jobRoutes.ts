@@ -1,22 +1,18 @@
 import { Router } from "express";
+import {
+  getJobsController,
+  createJobController,
+  getJobByIdController,
+  updateJobController,
+  deleteJobController,
+} from "../controllers/jobController";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.json([
-    {
-      title: "Frontend Developer",
-      location: "Remote • Lisboa",
-      skills: ["React", "TypeScript"],
-      experienceYears: 2,
-    },
-    {
-      title: "Backend Developer",
-      location: "Remote • Porto",
-      skills: ["Node.js", "MariaDB"],
-      experienceYears: 3,
-    },
-  ]);
-});
+router.get("/", getJobsController);
+router.post("/", createJobController);
+router.get("/:id", getJobByIdController);
+router.put("/:id", updateJobController);
+router.delete("/:id", deleteJobController);
 
 export default router;

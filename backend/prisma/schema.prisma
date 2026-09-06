@@ -10,12 +10,58 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   name      String
-  email     String   @unique
+  email     String   @unique(map: "User_email_key")
   role      UserRole
   createdAt DateTime @default(now())
+  candidate Candidate?
+  recruiter Recruiter?
+
+  @@map("user")
 }
 
 enum UserRole {
   CANDIDATE
   RECRUITER
+
+  @@map("user_role")
+}
+
+model Candidate {
+  id              Int    @id @default(autoincrement())
+  userId          Int    @unique
+  title           String
+  location        String
+  experienceYears Int    @default(0)
+  skills          String
+  bio             String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("candidate")
+}
+
+model Recruiter {
+  id          Int    @id @default(autoincrement())
+  userId      Int    @unique
+  companyName String
+  position    String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobs Job[]
+
+  @@map("recruiter")
+}
+
+model Job {
+  id              Int    @id @default(autoincrement())
+  recruiterId     Int
+  title           String
+  location        String
+  experienceYears Int    @default(0)
+  skills          String
+  description     String?
+
+  recruiter Recruiter @relation(fields: [recruiterId], references: [id], onDelete: Cascade)
+
+  @@map("job")
 }

@@ -1,23 +1,75 @@
-import { Candidate } from "../models/Candidate";
+import prisma from "../config/prisma";
 
-export const getCandidatesService = (): Candidate[] => {
-    return [
-        {
-            id: 1,
-            name: "Jonh Doe",
-            email: "johndoe@example.com",
-            role: "Candidate",
-            skills: ["JavaScript", "TypeScript", "React"],
-            exprerienceYears: 1
-        },
-        {
-            id: 2,
-            name: "lara Croft",
-            email: "laracroft@example.com",
-            role:"Candidate",
-            skills: ["Node.js", "MaiaDB", "Express"],
-            exprerienceYears: 2
+export const getCandidatesService = async () => {
+  return prisma.candidate.findMany({
+    include: {
+      user: true,
+    },
+  });
+};
 
-        },
-    ];
+export const getCandidateByIdService = async (id: number) => {
+  return prisma.candidate.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      user: true,
+    },
+  });
+};
+
+export const createCandidateService = async (
+  userId: number,
+  title: string,
+  location: string,
+  experienceYears: number,
+  skills: string,
+  bio?: string
+) => {
+  return prisma.candidate.create({
+    data: {
+      userId,
+      title,
+      location,
+      experienceYears,
+      skills,
+      bio,
+    },
+    include: {
+      user: true,
+    },
+  });
+};
+
+export const updateCandidateService = async (
+  id: number,
+  title: string,
+  location: string,
+  experienceYears: number,
+  skills: string,
+  bio?: string
+) => {
+  return prisma.candidate.update({
+    where: {
+      id,
+    },
+    data: {
+      title,
+      location,
+      experienceYears,
+      skills,
+      bio,
+    },
+    include: {
+      user: true,
+    },
+  });
+};
+export const deleteCandidateService = async (id: number) => {
+  return prisma.candidate.delete({
+    where: {
+      id,
+    },
+  });
 };
