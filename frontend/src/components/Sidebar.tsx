@@ -6,51 +6,48 @@ interface SidebarProps {
 }
 
 function Sidebar({ page, setPage }: SidebarProps) {
+  const menuItems = [
+    { label: "Dashboard", page: "dashboard", icon: "◈" },
+    { label: "Candidates", page: "candidates", icon: "◉" },
+    { label: "Recruiters", page: "recruiters", icon: "◎" },
+    { label: "Jobs", page: "jobs", icon: "▣" },
+    { label: "Applications", page: "applications", icon: "✓" },
+    { label: "Saved Jobs", page: "savedJobs", icon: "☆" },
+  ];
+
   return (
     <aside className="sidebar">
-      <h2>ShiftWise</h2>
+      <div className="sidebar-brand">
+        <div className="sidebar-logo">S</div>
+
+        <div>
+          <h2>ShiftWise</h2>
+          <span>Recruitment Platform</span>
+        </div>
+      </div>
+
+      <nav className="sidebar-nav">
+        {menuItems.map((item) => (
+          <button
+            key={item.page}
+            className={page === item.page ? "active" : ""}
+            onClick={() => setPage(item.page)}
+          >
+            <span className="sidebar-icon">{item.icon}</span>
+            <span>{item.label}</span>
+          </button>
+        ))}
+      </nav>
 
       <button
-        className={page === "dashboard" ? "active" : ""}
-        onClick={() => setPage("dashboard")}
-      >
-        Dashboard
-      </button>
-
-      <button
-        className={page === "candidates" ? "active" : ""}
-        onClick={() => setPage("candidates")}
-      >
-        Candidates
-      </button>
-
-      <button
-        className={page === "recruiters" ? "active" : ""}
-        onClick={() => setPage("recruiters")}
-      >
-        Recruiters
-      </button>
-
-      <button
-        className={page === "jobs" ? "active" : ""}
-        onClick={() => setPage("jobs")}
-      >
-        Jobs
-      </button>
-
-      <button
-        className={page === "applications" ? "active" : ""}
-        onClick={() => setPage("applications")}
-      >
-        Applications
-      </button>
-
-      <button
-        className={page === "savedJobs" ? "active" : ""}
-        onClick={() => setPage("savedJobs")}
-      >
-        Saved Jobs
-      </button>
+  className="logout-button"
+  onClick={() => {
+    localStorage.removeItem("loggedUser");
+    setPage("login");
+  }}
+>
+  ↪ Logout
+</button>
     </aside>
   );
 }

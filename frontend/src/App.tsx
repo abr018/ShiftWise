@@ -8,9 +8,14 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Jobs from "./pages/Jobs";
 import Sidebar from "./components/Sidebar";
+import Login from "./pages/Login";
 
 function App() {
-  const [page, setPage] = useState("dashboard");
+  const [page, setPage] = useState(() => {
+  const loggedUser = localStorage.getItem("loggedUser");
+
+  return loggedUser ? "dashboard" : "login";
+});
   const [selectedJob, setSelectedJob] = useState<any>(null);
   const [appliedJobs, setAppliedJobs] = useState<any[]>(() => {
   const savedApplications = localStorage.getItem("appliedJobs");
@@ -31,50 +36,58 @@ useEffect(() => {
 }, [savedJobs]);
 
   return (
-    <div className="app-layout">
-      <Sidebar page={page} setPage={setPage} />
+  <>
+    {page === "login" ? (
+      <Login setPage={setPage} />
+    ) : (
+      <div className="app-layout">
 
-      <main className="app-content">
-        {page === "dashboard" && (
-          <Dashboard
-          applicationsCount={appliedJobs.length}
-          savedJobsCount={savedJobs.length}
-        />
-        )}
-        
-        {page === "candidates" && <Candidates />}
-        {page === "recruiters" && <Recruiters />}
+        <Sidebar page={page} setPage={setPage} />
 
-        {page === "jobs" && (
-          <Jobs setPage={setPage} setSelectedJob={setSelectedJob} />
-        )}
+        <main className="app-content">
 
-        {page === "jobDetails" && (
-          <JobDetails
-            setPage={setPage}
-            selectedJob={selectedJob}
-            setAppliedJobs={setAppliedJobs}
-            setSavedJobs={setSavedJobs}
-          />
-        )}
+          {page === "dashboard" && (
+            <Dashboard
+              applicationsCount={appliedJobs.length}
+              savedJobsCount={savedJobs.length}
+            />
+          )}
 
-        {page === "applications" && (
-          <Applications
-      appliedJobs={appliedJobs}
-      setAppliedJobs={setAppliedJobs}
-    />
-        )}
+          {page === "candidates" && <Candidates />}
 
+          {page === "recruiters" && <Recruiters />}
 
-       {page === "savedJobs" && (
-        <SavedJobs
-        savedJobs={savedJobs}
-        setSavedJobs={setSavedJobs}
-/>
-  )} 
+          {page === "jobs" && (
+            <Jobs
+              setPage={setPage}
+              setSelectedJob={setSelectedJob}
+            />
+          )}
+
+          {page === "jobDetails" && (
+            <JobDetails
+              setPage={setPage}
+              selectedJob={selectedJob}
+              setAppliedJobs={setAppliedJobs}
+              setSavedJobs={setSavedJobs}
+            />
+          )}
+
+          {page === "applications" && <Applications />}
+
+          {page === "savedJobs" && (
+            <SavedJobs
+              savedJobs={savedJobs}
+              setSavedJobs={setSavedJobs}
+            />
+          )}
+
         </main>
       </div>
-    );
+    )}
+  </>
+);
+ 
   }
 
 export default App;

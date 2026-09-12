@@ -14,42 +14,82 @@ function Jobs({
   const [sortBy, setSortBy] = useState("Default");
 
   useEffect(() => {
-    getJobs().then((data) => {
-      setJobs(data);
-    });
+    getJobs()
+      .then((data) => {
+        const normalizedJobs = data.map((job: any) => ({
+          ...job,
+          skills:
+            typeof job.skills === "string"
+              ? job.skills
+                  .split(",")
+                  .map((skill: string) => skill.trim())
+              : job.skills || [],
+        }));
+
+        setJobs(normalizedJobs);
+      })
+      .catch((error) => {
+        console.error("Error loading jobs:", error);
+      });
   }, []);
 
-const filteredJobs = jobs.filter((job) => {
-  const matchesSearch =
-    job.title.toLowerCase().includes(search.toLowerCase()) ||
-    job.location.toLowerCase().includes(search.toLowerCase()) ||
-    job.skills.some((skill: string) =>
-      skill.toLowerCase().includes(search.toLowerCase())
-    );
+  const filteredJobs = jobs.filter((job) => {
+    const searchValue = search.toLowerCase();
 
-  const matchesFilter =
-    filter === "All" ||
-    job.title.toLowerCase().includes(filter.toLowerCase()) ||
-    job.location.toLowerCase().includes(filter.toLowerCase());
+    const title = job.title?.toLowerCase() || "";
+    const location = job.location?.toLowerCase() || "";
 
-  return matchesSearch && matchesFilter;
-});
+    const matchesSearch =
+      title.includes(searchValue) ||
+      location.includes(searchValue) ||
+      job.skills.some((skill: string) =>
+        skill.toLowerCase().includes(searchValue)
+      );
 
-const sortedJobs = [...filteredJobs].sort((a, b) => {
-  if (sortBy === "AZ") {
-    return a.title.localeCompare(b.title);
-  }
+    let matchesFilter = true;
 
-  if (sortBy === "ZA") {
-    return b.title.localeCompare(a.title);
-  }
+    if (filter === "Frontend") {
+      matchesFilter =
+        title.includes("frontend") ||
+        job.skills.some((skill: string) =>
+          ["react", "javascript", "typescript", "html", "css"].includes(
+            skill.toLowerCase()
+          )
+        );
+    }
 
-  if (sortBy === "Experience") {
-    return b.experienceYears - a.experienceYears;
-  }
+    if (filter === "Backend") {
+      matchesFilter =
+        title.includes("backend") ||
+        job.skills.some((skill: string) =>
+          ["node.js", "node", "express", "prisma", "mysql"].includes(
+            skill.toLowerCase()
+          )
+        );
+    }
 
-  return 0;
-});
+    if (filter === "Remote") {
+      matchesFilter = location.includes("remote");
+    }
+
+    return matchesSearch && matchesFilter;
+  });
+
+  const sortedJobs = [...filteredJobs].sort((a, b) => {
+    if (sortBy === "AZ") {
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === "ZA") {
+      return b.title.localeCompare(a.title);
+    }
+
+    if (sortBy === "Experience") {
+      return b.experienceYears - a.experienceYears;
+    }
+
+    return 0;
+  });
 
   return (
     <div className="dashboard">
@@ -68,14 +108,15 @@ const sortedJobs = [...filteredJobs].sort((a, b) => {
           marginBottom: "25px",
         }}
       />
-        <div className="app-buttons">
+
+      <div className="app-buttons">
         <button
           className={filter === "All" ? "active-filter" : ""}
           onClick={() => setFilter("All")}
         >
           All
         </button>
-        
+
         <button
           className={filter === "Frontend" ? "active-filter" : ""}
           onClick={() => setFilter("Frontend")}
@@ -96,27 +137,27 @@ const sortedJobs = [...filteredJobs].sort((a, b) => {
         >
           Remote
         </button>
-        </div>
+      </div>
 
       <div style={{ marginBottom: "20px" }}>
-      <select
-        value={sortBy}
-        onChange={(e) => setSortBy(e.target.value)}
-      >
-        <option value="Default">Sort by</option>
-        <option value="AZ">Title (A-Z)</option>
-        <option value="ZA">Title (Z-A)</option>
-        <option value="Experience">Experience</option>
-      </select>
-      </div>  
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="Default">Sort by</option>
+          <option value="AZ">Title (A-Z)</option>
+          <option value="ZA">Title (Z-A)</option>
+          <option value="Experience">Experience</option>
+        </select>
+      </div>
 
       <div className="candidate-list">
-        {sortedJobs.length === 0 && (
-          <p>No jobs found.</p>
-        )}
-        {sortedJobs.map((job, index) => (
-          <div className="candidate-card" key={index}>
+        {sortedJobs.length === 0 && <p>No jobs found.</p>}
+
+        {sortedJobs.map((job) => (
+          <div className="candidate-card" key={job.id}>
             <h3>{job.title}</h3>
+
             <p>{job.location}</p>
 
             <div className="skills">

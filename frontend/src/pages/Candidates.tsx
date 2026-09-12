@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 
 interface Candidate {
   id: number;
-  name: string;
-  email: string;
-  skills: string[];
+  title: string;
+  location: string;
+  skills: string | string[];
   experienceYears: number;
+  user: {
+    name: string;
+    email: string;
+  };
 }
 
 function Candidates() {
@@ -30,8 +34,10 @@ function Candidates() {
         {candidates.map((candidate) => (
           <CandidateCard
             key={candidate.id}
-            name={candidate.name}
-            email={candidate.email}
+            name={candidate.user.name}
+            email={candidate.user.email}
+            title={candidate.title}
+            location={candidate.location}
             skills={candidate.skills}
             experienceYears={candidate.experienceYears}
           />

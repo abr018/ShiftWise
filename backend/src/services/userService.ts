@@ -2,7 +2,15 @@ import prisma from "../config/prisma";
 import { UserRole } from "@prisma/client";
 
 export const getUsersService = async () => {
-  return prisma.user.findMany();
+  return prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      createdAt: true,
+    },
+  });
 };
 
 export const createUserService = async (

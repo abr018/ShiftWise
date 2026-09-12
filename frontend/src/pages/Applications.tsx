@@ -1,47 +1,48 @@
-function Applications({
-  appliedJobs,
-  setAppliedJobs,
-}: {
-  appliedJobs: any[];
-  setAppliedJobs: React.Dispatch<React.SetStateAction<any[]>>;
-}) {
-  function removeApplication(title: string) {
-    setAppliedJobs((previousJobs) =>
-      previousJobs.filter((job) => job.title !== title)
-    );
-  }
+import { useEffect, useState } from "react";
+import { getApplications } from "../services/api";
+
+function Applications() {
+  const [applications, setApplications] = useState<any[]>([]);
+
+  useEffect(() => {
+    getApplications()
+      .then((data) => setApplications(data))
+      .catch((error) =>
+        console.error("Error loading applications:", error)
+      );
+  }, []);
 
   return (
     <div className="dashboard">
       <h1>Applications</h1>
 
-      {appliedJobs.length === 0 && (
-        <p>You have not applied to any jobs yet.</p>
+      {applications.length === 0 && (
+        <p>No applications found.</p>
       )}
 
       <div className="candidate-list">
-        {appliedJobs.map((job, index) => (
-          <div className="candidate-card" key={index}>
-            <h3>{job.title}</h3>
+        {applications.map((application) => (
+          <div className="candidate-card" key={application.id}>
+            <h3>{application.job?.title}</h3>
 
             <p>
-              <strong>Location:</strong> {job.location}
+              <strong>Candidate:</strong>{" "}
+              {application.candidate?.user?.name}
             </p>
 
             <p>
-              <strong>Status:</strong> Applied
+              <strong>Location:</strong>{" "}
+              {application.job?.location}
             </p>
 
             <p>
-              <strong>Applied on:</strong> {job.appliedDate}
+              <strong>Status:</strong> {application.status}
             </p>
 
-            <button
-              className="card-button"
-              onClick={() => removeApplication(job.title)}
-            >
-              Remove Application
-            </button>
+            <p>
+              <strong>Applied on:</strong>{" "}
+              {new Date(application.createdAt).toLocaleDateString()}
+            </p>
           </div>
         ))}
       </div>

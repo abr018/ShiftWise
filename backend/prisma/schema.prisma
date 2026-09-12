@@ -11,6 +11,7 @@ model User {
   id        Int      @id @default(autoincrement())
   name      String
   email     String   @unique(map: "User_email_key")
+  password String?
   role      UserRole
   createdAt DateTime @default(now())
   candidate Candidate?
@@ -36,6 +37,8 @@ model Candidate {
   bio             String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  applications Application[]
 
   @@map("candidate")
 }
@@ -63,5 +66,21 @@ model Job {
 
   recruiter Recruiter @relation(fields: [recruiterId], references: [id], onDelete: Cascade)
 
+  applications Application[]
+
   @@map("job")
+}
+
+model Application {
+  id          Int      @id @default(autoincrement())
+  candidateId Int
+  jobId       Int
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+
+  candidate Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  job       Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, jobId])
+  @@map("application")
 }

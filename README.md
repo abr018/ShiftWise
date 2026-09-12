@@ -4,13 +4,14 @@
 
 # Recruitment Management Platform
 
-A modern recruitment management platform built with **React**, **TypeScript** and **Vite**.
+A full-stack recruitment management platform built with **React**, **TypeScript**, **Node.js**, **Express**, **Prisma** and **MariaDB**.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb)
-![Status](https://img.shields.io/badge/Status-In%20Development-success?style=for-the-badge)
 
 </p>
 
@@ -18,45 +19,49 @@ A modern recruitment management platform built with **React**, **TypeScript** an
 
 # 📖 About
 
-**ShiftWise** is a recruitment management platform developed as a personal learning project.
+**ShiftWise** is a full-stack recruitment management platform developed as a personal portfolio project.
 
-The application simulates a modern recruitment system where recruiters can:
+The application simulates a recruitment system where candidates can explore job opportunities, search and filter vacancies, save jobs and submit applications. It also provides candidate and recruiter information through a REST API connected to a relational database.
 
-- 👤 Manage candidates
-- 👨‍💼 Manage recruiters
-- 💼 Publish job opportunities
-- 🔍 Search and filter vacancies
-- ❤️ Save favourite jobs
-- ✅ Apply to jobs
-
-The main goal of this project is to improve my **React**, **TypeScript** and **Front-End Development** skills while following modern software development practices.
+The project was created to strengthen my skills in **full-stack development**, **REST APIs**, **database integration**, **React** and **TypeScript**.
 
 ---
 
 # ✨ Features
 
-- 📊 Dashboard
-- 👨‍💼 Recruiter Management
-- 👤 Candidate Management
-- 💼 Job Listings
-- 📄 Job Details
-- 🔍 Search Jobs
-- 🎯 Filter Jobs
-- ↕️ Sort Jobs
-- ✅ Apply to Jobs
-- ❤️ Save Favourite Jobs
-- 💾 LocalStorage Persistence
-- 📱 Fully Responsive Design
+- 📊 Recruitment dashboard
+- 👤 Candidate profiles
+- 👨‍💼 Recruiter profiles
+- 💼 Job listings
+- 📄 Job details
+- 🔍 Job search
+- 🎯 Job filtering
+- ↕️ Job sorting
+- ✅ Job applications
+- ⭐ Saved jobs
+- 🔐 Login and session persistence
+- 🔌 REST API integration
+- 🗄️ Database persistence
+- 📱 Responsive interface
 
 ---
 
-# 🛠️ Technologies
+# 🛠️ Tech Stack
 
+### Frontend
 - React
 - TypeScript
 - Vite
 - CSS
-- LocalStorage
+
+### Backend
+- Node.js
+- Express
+- TypeScript
+- Prisma ORM
+
+### Database
+- MariaDB
 
 ---
 
@@ -68,7 +73,7 @@ The main goal of this project is to improve my **React**, **TypeScript** and **F
   <img src="./screenshots/Dashboard.png" width="750">
 </p>
 
-Overview of the recruitment platform displaying statistics and quick navigation.
+Overview of the recruitment platform with statistics and quick navigation.
 
 ---
 
@@ -88,7 +93,7 @@ Browse, search, filter and sort available job opportunities.
   <img src="./screenshots/Job%20Details.png" width="750">
 </p>
 
-Detailed information about each vacancy, including technologies and experience requirements.
+View vacancy information, required technologies and experience.
 
 ---
 
@@ -98,7 +103,7 @@ Detailed information about each vacancy, including technologies and experience r
   <img src="./screenshots/Candidates.png" width="750">
 </p>
 
-Candidate profiles displayed using reusable React components.
+Candidate information retrieved from the backend API.
 
 ---
 
@@ -108,7 +113,7 @@ Candidate profiles displayed using reusable React components.
   <img src="./screenshots/Recruiters.png" width="750">
 </p>
 
-Recruiter profiles with technologies, contact information and experience.
+Recruiter profiles retrieved from the backend API.
 
 ---
 
@@ -118,33 +123,44 @@ Recruiter profiles with technologies, contact information and experience.
   <img src="./screenshots/Applications.png" width="750">
 </p>
 
-Track submitted job applications and monitor their status.
+Track submitted job applications and their current status.
 
 ---
 
-## ❤️ Saved Jobs
+## ⭐ Saved Jobs
 
 <p align="center">
   <img src="./screenshots/Saved%20Jobs.png" width="750">
 </p>
 
-Save favourite job opportunities locally using LocalStorage.
+Save and remove job opportunities from the saved jobs section.
 
 ---
 
 # 📂 Project Structure
 
 ```text
-frontend/
+ShiftWise/
 │
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── styles/
-│   └── App.tsx
+├── backend/
+│   ├── prisma/
+│   └── src/
+│       ├── controllers/
+│       ├── routes/
+│       ├── services/
+│       └── server.ts
+│
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── assets/
+│       ├── components/
+│       ├── pages/
+│       ├── services/
+│       ├── styles/
+│       └── App.tsx
+│
+└── screenshots/
 ```
 
 ---
@@ -155,40 +171,42 @@ frontend/
 
 ```bash
 git clone https://github.com/abr018/ShiftWise.git
+cd ShiftWise
 ```
 
-## Navigate to the frontend
+## Backend
 
 ```bash
-cd ShiftWise/frontend
-```
-
-## Install dependencies
-
-```bash
+cd backend
 npm install
-```
-
-## Run the application
-
-```bash
 npm run dev
 ```
 
+## Frontend
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend will be available through the local Vite development server.
+
+> The backend requires a configured MariaDB database and environment variables.
+
 ---
 
-# 🎯 Roadmap
+# 🔮 Future Improvements
 
-- 🔐 JWT Authentication
-- 🌐 ASP.NET Core Web API
-- 🗄️ MariaDB Integration
-- 👤 User Profiles
-- 👨‍💼 Recruiter Authentication
-- 🖼️ Image Upload
-- 📧 Email Notifications
-- 🐳 Docker Support
-- ✅ Unit Testing
-- ☁️ Cloud Deployment
+- Role-based authentication and authorization
+- Improved user profiles
+- Recruiter job management
+- Email notifications
+- Automated testing
+- Docker support
+- Cloud deployment
 
 ---
 
@@ -196,16 +214,13 @@ npm run dev
 
 **José Abreu Cosme Zaza**
 
-🎓 Computer Science Student
-💻 Aspiring Full-Stack Developer
+🎓 Computer Science Student  
+💻 Junior Full-Stack Developer
 
-GitHub:
-https://github.com/abr018
+GitHub: https://github.com/abr018
 
 ---
 
 <p align="center">
-
-⭐ If you enjoyed this project, consider giving it a Star!
-
+⭐ If you found this project interesting, consider giving it a star!
 </p>
